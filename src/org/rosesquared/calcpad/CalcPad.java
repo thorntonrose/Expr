@@ -75,8 +75,9 @@ public class CalcPad extends Activity implements TextView.OnEditorActionListener
    public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
       Log.d(TAG, "onEditorAction: actionId: " + actionId + ", keyEvent: " + keyEvent);
 
-      if (actionId == EditorInfo.IME_ACTION_DONE) {
-         Log.d(TAG, "onEditorAction: IME_ACTION_DONE");
+      if ((actionId == EditorInfo.IME_ACTION_DONE) ||
+          ((keyEvent != null) && (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER))) {
+         Log.d(TAG, "onEditorAction: IME_ACTION_DONE || KEYCODE_ENTER");
          String input = textView.getText().toString().trim();
 
          if (input.length() > 0) {
@@ -99,6 +100,7 @@ public class CalcPad extends Activity implements TextView.OnEditorActionListener
 
             inputView.endBatchEdit();
             inputView.setText("");
+            hideKeyboard();
          }
       }
 
@@ -122,5 +124,10 @@ public class CalcPad extends Activity implements TextView.OnEditorActionListener
    public void clear() {
       listAdapter.clear();
       listAdapter.notifyDataSetChanged();
+   }
+
+   public void hideKeyboard() {
+      InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+      imm.hideSoftInputFromWindow(inputView.getWindowToken(), 0);
    }
 }

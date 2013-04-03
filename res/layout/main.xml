@@ -12,7 +12,8 @@
       android:textAppearance="?android:attr/textAppearanceLarge"
       android:singleLine="true"
       android:imeOptions="actionDone"
-      android:imeActionLabel="@string/equal_symbol"
+      android:imeActionLabel="@string/enter"
+      android:inputType="text"
    />
    <ListView
       android:id="@+id/results_view"
