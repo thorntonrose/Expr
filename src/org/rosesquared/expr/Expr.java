@@ -1,4 +1,4 @@
-package org.rosesquared.calcpad;
+package org.rosesquared.expr;
 
 import android.app.*;
 import android.content.*;
@@ -8,9 +8,9 @@ import android.view.*;
 import android.view.inputmethod.*;
 import android.widget.*;
 
-public class CalcPad extends Activity implements TextView.OnEditorActionListener, ListView.OnItemClickListener,
+public class Expr extends Activity implements TextView.OnEditorActionListener, ListView.OnItemClickListener,
       Thread.UncaughtExceptionHandler {
-   public static final String TAG = CalcPad.class.getName();
+   public static final String TAG = Expr.class.getName();
    private EditText inputView;
    private ListView resultsView;
    private ArrayAdapter<String> listAdapter;
@@ -39,13 +39,13 @@ public class CalcPad extends Activity implements TextView.OnEditorActionListener
       resultsView.setOnItemClickListener(this);
    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+   @Override
+   public boolean onCreateOptionsMenu(Menu menu) {
       Log.d(TAG, "onCreateOptionsMenu");
       getMenuInflater().inflate(R.menu.main, menu);
       this.menu = menu;
       return true;
-	}
+   }
 
    @Override
    public boolean onOptionsItemSelected(MenuItem item) {
@@ -70,7 +70,7 @@ public class CalcPad extends Activity implements TextView.OnEditorActionListener
 
       return super.onOptionsItemSelected(item);
    }
-   
+
    @Override
    public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
       Log.d(TAG, "onEditorAction: actionId: " + actionId + ", keyEvent: " + keyEvent);
@@ -120,8 +120,9 @@ public class CalcPad extends Activity implements TextView.OnEditorActionListener
       Log.e(TAG, "uncaughtException: " + t.toString(), t);
       Messages.error(this, t);
    }
-   
+
    public void clear() {
+      inputView.setText("");
       listAdapter.clear();
       listAdapter.notifyDataSetChanged();
    }

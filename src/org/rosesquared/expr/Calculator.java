@@ -1,4 +1,4 @@
-package org.rosesquared.calcpad;
+package org.rosesquared.expr;
 
 import java.io.*;
 
@@ -7,7 +7,7 @@ public class Calculator {
    public boolean verbose = false;
    private PushbackReader reader;
    private String token = "";
-   private double currValue = 0.0;
+   private double currValue = 0;
    private String equation = "";
 
    public String getEquation() {
@@ -20,7 +20,7 @@ public class Calculator {
       nextToken();
 
       if (token.equals("END")) {
-         currValue = 0.0;
+         currValue = 0;
       } else {
          currValue = expression();
          if (! token.equals("END")) { throw new ArithmeticException("expected END; got '" + token + "'"); }
@@ -35,11 +35,11 @@ public class Calculator {
 
       while (true) {
          char c = getChar();
-         
+
          // end of input
          if (c == 0) {
             token = "END";
-            break; 
+            break;
          }
 
          // number token
@@ -74,7 +74,7 @@ public class Calculator {
             reader.unread(c);
             break;
          }
-         
+
          token += c;
       }
    }
@@ -102,7 +102,7 @@ public class Calculator {
       if (verbose) { System.out.println("> expression: value: " + value); }
       return value;
    }
-   
+
    public double term() throws Exception {
       if (verbose) { System.out.println("term..."); }
       double value = exponent();
@@ -125,11 +125,11 @@ public class Calculator {
       if (verbose) { System.out.println("> term: value: " + value); }
       return value;
    }
-   
+
    public double exponent() throws Exception {
       if (verbose) { System.out.println("exponent..."); }
       double value = primary();
-      
+
       while (true) {
          if (token.equals("^")) {
             nextToken();
@@ -138,14 +138,14 @@ public class Calculator {
             break;
          }
       }
-      
+
       if (verbose) { System.out.println("> term: value: " + value); }
       return value;
    }
 
    public double primary() throws Exception {
       if (verbose) { System.out.println("> primary..."); }
-      double value = 0.0;
+      double value = 0;
 
       if (token.startsWith("NUM:")) {
          value = getNumberValue(token);
@@ -169,7 +169,7 @@ public class Calculator {
 
       return value;
    }
-   
+
    public double getNumberValue(String token) {
       String[] parts = token.split(":");
 

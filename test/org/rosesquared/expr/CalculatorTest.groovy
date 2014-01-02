@@ -1,13 +1,13 @@
-package org.rosesquared.calcpad
+package org.rosesquared.expr
 
 /**
  * Calculator tests.
- * 
+ *
  * @author ethorro
  */
 class CalculatorTest extends GroovyTestCase {
    def calculator
-   
+
    protected void setUp() {
       super.setUp()
       calculator = new Calculator()
@@ -62,7 +62,7 @@ class CalculatorTest extends GroovyTestCase {
       assertValue(2.0, "1*2")
       assertValue(-2.0, "1 * -2")
    }
-   
+
    void testCalculate_Divide() {
       println "${name}..."
       assertValue(1.0, "2 / 2")
@@ -138,7 +138,7 @@ class CalculatorTest extends GroovyTestCase {
          println "> ${e.message}"
       }
    }
-   
+
    void testCalculate_UnexpectedToken() {
       println "${name}..."
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="CalcPad" default="help">
+<project name="Expr" default="help">
    <!-- The local.properties file is created and updated by the 'android' tool.
         It contains the path to the SDK. It should *NOT* be checked into
         Version Control Systems. -->
@@ -91,7 +91,7 @@
    <property name="test.libs.dir" value="test-libs"/>
    <property name="test.classes.dir" value="bin/test-classes"/>
    <property name="test.results.dir" value="bin/test-results"/>
-   
+
    <path id="test.path">
       <pathelement location="${test.classes.dir}"/>
       <pathelement location="${out.classes.absolute.dir}"/>
@@ -114,7 +114,7 @@
          <classpath>
             <path refid="test.path"/>
          </classpath>
-         
+
          <formatter type="xml"/>
 
          <batchtest todir="${test.results.dir}">
@@ -131,9 +131,9 @@
    <target name="dist">
       <xmlproperty file="AndroidManifest.xml" prefix="AndroidManifest"/>
       <mkdir dir="dist"/>
-      <copy 
+      <copy
          verbose="true"
-         file="bin/${ant.project.name}-release.apk" 
+         file="bin/${ant.project.name}-release.apk"
          tofile="dist/${ant.project.name}-${AndroidManifest.manifest(android:versionName)}.apk"
       />
    </target>

@@ -1,4 +1,4 @@
-package org.rosesquared.calcpad;
+package org.rosesquared.expr;
 
 import android.app.*;
 import android.os.*;
@@ -15,7 +15,8 @@ public class Help extends Activity {
       setContentView(R.layout.help);
       TextView helpView = (TextView) findViewById(R.id.help_view);
       helpView.setText(
-         getString(R.string.app_name) + " is a calculator that lets you do calculations by entering equations.\n" +
+         getString(R.string.app_name) + " is a calculator that evaluates expressions. " +
+            "Type the expression in the field at the top, then press the Enter key.\n" +
          "\n" +
          "Operators:\n" +
          "\n" +
@@ -33,7 +34,7 @@ public class Help extends Activity {
          "\n" +
          "Special Symbols:\n" +
          "\n" +
-         "The @ symbol will be replaced with the value of the last calculation. The value will be 0 if " +
+         "The @ symbol will be replaced with the value of the last calculation. It will be 0 if " +
          "there has not been a calculation or the last calculation had no result.\n" +
          "\n" +
          "Examples:\n" +

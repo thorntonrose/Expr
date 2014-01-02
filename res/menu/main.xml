@@ -4,18 +4,12 @@
       android:icon="@drawable/delete"
       android:showAsAction="always"
    />
-   <!--
-      android:title="@string/clear"
-   -->
 
    <item
       android:id="@+id/menu_help"
       android:icon="@drawable/help"
       android:showAsAction="always"
    />
-   <!--
-      android:title="@string/help"
-   -->
 
    <item
       android:id="@+id/menu_about"

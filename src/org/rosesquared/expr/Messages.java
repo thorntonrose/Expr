@@ -1,4 +1,4 @@
-package org.rosesquared.calcpad;
+package org.rosesquared.expr;
 
 import android.app.*;
 import android.content.*;
@@ -11,7 +11,7 @@ import android.widget.*;
  */
 public final class Messages {
    private Messages() {}
-   
+
    public static String getAppVersion(Context context) {
       try {
          return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
@@ -24,10 +24,10 @@ public final class Messages {
 
    public static void about(Context context) {
       info(
-         context, 
+         context,
          "About",
-         context.getString(R.string.app_name) + " " + getAppVersion(context) + 
-            "\nby " + context.getString(R.string.author) + 
+         context.getString(R.string.app_name) + " " + getAppVersion(context) +
+            "\nby " + context.getString(R.string.author) +
             "\n" + context.getString(R.string.author_email)
       );
    }
