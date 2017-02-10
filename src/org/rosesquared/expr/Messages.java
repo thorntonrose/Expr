@@ -19,7 +19,7 @@ public final class Messages {
          error(context, e);
       }
 
-      return "1.0";
+      return "1.1";
    }
 
    public static void about(Context context) {
